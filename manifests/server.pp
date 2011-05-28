@@ -1,10 +1,10 @@
 define openvpn::server (
-    $prot = 'udp',
-    $dev  = 'tun',
-    $cert = "${name}.crt",
-    $key  = "${name}.key",
-    $ca   = "ca.crt",
-    $dh   = "dh2048.pem",
+    $proto  = 'udp',
+    $dev    = 'tun',
+    $cert   = "${name}.crt",
+    $key    = "${name}.key",
+    $ca     = "ca.crt",
+    $dh     = "dh2048.pem",
     $server = "10.8.0.0 255.255.255.0"
   ) {
   include openvpn
