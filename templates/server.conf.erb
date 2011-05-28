@@ -33,7 +33,7 @@ port 1194
 
 # TCP or UDP server?
 ;proto tcp
-proto udp
+proto <%= proto %>
 
 # "dev tun" will create a routed IP tunnel,
 # "dev tap" will create an ethernet tunnel.
@@ -50,7 +50,7 @@ proto udp
 # unless you partially or fully disable
 # the firewall for the TUN/TAP interface.
 ;dev tap
-dev tun
+dev <%= dev %>
 
 # Windows needs the TAP-Win32 adapter name
 # from the Network Connections panel if you
@@ -75,9 +75,9 @@ dev tun
 # Any X509 key management system can be used.
 # OpenVPN can also use a PKCS #12 formatted key file
 # (see "pkcs12" directive in man page).
-ca ca.crt
-cert fek.homeip.net.crt
-key fek.homeip.net.key  # This file should be kept secret
+ca <%= ca %>
+cert <%= cert %>
+key <%= key %>  # This file should be kept secret
 
 # Diffie hellman parameters.
 # Generate your own with:
@@ -85,7 +85,7 @@ key fek.homeip.net.key  # This file should be kept secret
 # Substitute 2048 for 1024 if you are using
 # 2048 bit keys. 
 #dh dh1024.pem
-dh dh2048.pem
+dh <%= dh %>
 
 # Configure server mode and supply a VPN subnet
 # for OpenVPN to draw client addresses from.
@@ -94,7 +94,7 @@ dh dh2048.pem
 # Each client will be able to reach the server
 # on 10.8.0.1. Comment this line out if you are
 # ethernet bridging. See the man page for more info.
-server 10.8.0.0 255.255.255.0
+server <%= server %>
 
 # Maintain a record of client <-> virtual IP address
 # associations in this file.  If OpenVPN goes down or
