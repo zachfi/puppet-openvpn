@@ -124,6 +124,8 @@ ifconfig-pool-persist ipp.txt
 # back to the OpenVPN server.
 ;push "route 192.168.10.0 255.255.255.0"
 ;push "route 192.168.20.0 255.255.255.0"
+push "route <%= route %>"
+
 
 # To assign specific IP addresses to specific
 # clients or if a connecting client has a private
@@ -235,7 +237,7 @@ keepalive 10 120
 # This config item must be copied to
 # the client config file as well.
 ;cipher BF-CBC        # Blowfish (default)
-;cipher AES-128-CBC   # AES
+cipher AES-128-CBC   # AES
 ;cipher DES-EDE3-CBC  # Triple-DES
 
 # Enable compression on the VPN link.

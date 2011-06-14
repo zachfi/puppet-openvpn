@@ -1,11 +1,12 @@
-define openvpn::server (
+class openvpn::server (
     $proto  = 'udp',
     $dev    = 'tun',
-    $cert   = "${name}.crt",
-    $key    = "${name}.key",
+    $cert   = "server.crt",
+    $key    = "server.key",
     $ca     = "ca.crt",
     $dh     = "dh2048.pem",
-    $server = "10.8.0.0 255.255.255.0"
+    $server = "10.8.0.0 255.255.255.0",
+    $route  = ''
   ) {
   include openvpn
   include openvpn::params
@@ -13,7 +14,8 @@ define openvpn::server (
   $openvpn_dir = $openvpn::params::openvpn_dir
 
   # Server configuration file
-  file { "${openvpn_dir}/${name}.conf":
+  #file { "${openvpn_dir}/${name}.conf":
+  file { "${openvpn_dir}/openvpn.conf":
     owner   => root,
     group   => 0,
     mode    => 0600,
