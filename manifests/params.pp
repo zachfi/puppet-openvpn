@@ -6,8 +6,10 @@ class openvpn::params {
       $package     = 'security/openvpn'
     }
     default: {
-
+      $openvpn_dir = '/etc/openvpn'
+      $package     = 'openvpn'
     }
   }
+
 }
 
