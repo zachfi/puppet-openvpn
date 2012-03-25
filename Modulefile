@@ -1,0 +1,8 @@
+name    'puppet-openvpn'
+version '0.0.1'
+source 'git://github.com/xaque208/puppet-openvpn.git'
+author 'zleslie'
+license 'Apache License Version 2.0'
+summary 'Puppet openvpn management module'
+description 'A module to deploy and manage the openvpn daemons'
+project_page 'https://github.com/xaque208/puppet-openvpn'
