@@ -82,7 +82,7 @@ client-config-dir ccd
 # of 0.0.0.0/0.0.0.0.
 ;push "redirect-gateway"
 <% if redirect_gateway != '' -%>
-  push "redirect gateway <%= redirect_gateway %>"
+push "<%= redirect_gateway %>"
 <% end -%>
 
 # Certain Windows-specific network settings

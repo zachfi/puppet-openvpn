@@ -23,9 +23,12 @@ class openvpn::server (
   include openvpn
   include openvpn::params
 
-  if ( log_append != '' ) and ( log != ''){
+
+  if ( $log_append != '' ) and ( $log != '' ){
     err("Log_append and log should not both be defined")
   }
+
+
 
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
