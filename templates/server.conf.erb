@@ -161,8 +161,13 @@ comp-lzo
 #
 # You can uncomment this out on
 # non-Windows systems.
-user nobody
-group nobody
+<% if openvpn_user != '' -%>
+user  <%= openvpn_user %>
+<% end -%>
+
+<% if openvpn_group != '' -%>
+group <%= openvpn_group %>
+<% end -%>
 
 # The persist options will try to avoid
 # accessing certain resources on restart
@@ -183,15 +188,12 @@ status openvpn-status.log
 # "log" will truncate the log file on OpenVPN startup,
 # while "log-append" will append to it.  Use one
 # or the other (but not both).
-;log         openvpn.log
-;log-append  openvpn.log
-
 <% if log != '' -%>
-log  <%= log %>"
+log  <%= log %>
 <% end -%>
 
 <% if log_append != '' -%>
-log_append  <%= log_append %>"
+log_append  <%= log_append %>
 <% end -%>
 
 # Set the appropriate level of log

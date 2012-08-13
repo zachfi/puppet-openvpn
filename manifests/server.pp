@@ -16,11 +16,16 @@ class openvpn::server (
     $client_cert_not_required = '',
     $plugins                  = '',
     $crl                      = '',
-    $openvpn_dir              = $openvpn::params::openvpn_dir
+    $openvpn_dir              = $openvpn::params::openvpn_dir,
+    $openvpn_user             = 'nobody',
+    $openvpn_group            = 'nobody'
   ) inherits openvpn::params {
   include openvpn
   include openvpn::params
 
+  if ( log_append != '' ) and ( log != ''){
+    err("Log_append and log should not both be defined")
+  }
 
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
@@ -43,12 +48,12 @@ class openvpn::server (
     mode   => 755;
   }
 
-  file { "${openvpn_dir}/dh2048.pem":  owner => root, group => 0, mode => 600; }
+  file { "${openvpn_dir}/${dh}":  owner => root, group => 0, mode => 600; }
 
-  exec { "create dh2048.pem":
+  exec { "create ${dh}":
     cwd     => "${openvpn_dir}",
-    command => "/usr/bin/openssl dhparam -out dh2048.pem 2048",
-    creates => "${openvpn_dir}/dh2048.pem",
+    command => "/usr/bin/openssl dhparam -out ${dh} 2048",
+    creates => "${openvpn_dir}/${dh}",
     before  => Service["openvpn"],
   }
 
