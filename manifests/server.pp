@@ -39,19 +39,7 @@ class openvpn::server (
     content => template("openvpn/server.conf.erb");
   }
 
-  # Set permissions on the rest
-  file { "${openvpn_dir}/ca.crt":      owner => root, group => 0, mode => 640; }
-  file { "${openvpn_dir}/${name}.crt": owner => root, group => 0, mode => 640; }
-  file { "${openvpn_dir}/${name}.key": owner => root, group => 0, mode => 600; }
-  file { "${openvpn_dir}/crl.pem":     owner => root, group => 0, mode => 644, content => template($crl); }
-  file { "${openvpn_dir}/ccd":
-    ensure => directory,
-    owner  => root,
-    group  => 0,
-    mode   => 755;
-  }
 
-  file { "${openvpn_dir}/${dh}":  owner => root, group => 0, mode => 600; }
 
   exec { "create ${dh}":
     cwd     => "${openvpn_dir}",
