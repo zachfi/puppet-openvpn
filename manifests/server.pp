@@ -1,21 +1,26 @@
 class openvpn::server (
-    $port   = '1194',
-    $proto  = 'udp',
-    $dev    = 'tun',
-    $cert   = "server.crt",
-    $key    = "server.key",
-    $ca     = "ca.crt",
-    $dh     = "dh2048.pem",
-    $server = "10.8.0.0 255.255.255.0",
-    $route  = '',
-    $cipher = "AES-192-CBC",
-    $dns    = '',
-    $crl    = ''
-  ) {
+    $port                     = '1194',
+    $proto                    = 'udp',
+    $dev                      = 'tun',
+    $cert                     = "server.crt",
+    $key                      = "server.key",
+    $ca                       = "ca.crt",
+    $dh                       = "dh2048.pem",
+    $server                   = "10.8.0.0 255.255.255.0",
+    $route                    = '',
+    $cipher                   = "AES-192-CBC",
+    $dns                      = '',
+    $redirect_gateway         = '',
+    $log                      = '',
+    $log_append               = '',
+    $client_cert_not_required = '',
+    $plugins                  = '',
+    $crl                      = '',
+    $openvpn_dir              = $openvpn::params::openvpn_dir
+  ) inherits openvpn::params {
   include openvpn
   include openvpn::params
 
-  $openvpn_dir = $openvpn::params::openvpn_dir
 
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
@@ -30,7 +35,6 @@ class openvpn::server (
   file { "${openvpn_dir}/ca.crt":      owner => root, group => 0, mode => 640; }
   file { "${openvpn_dir}/${name}.crt": owner => root, group => 0, mode => 640; }
   file { "${openvpn_dir}/${name}.key": owner => root, group => 0, mode => 600; }
-  file { "${openvpn_dir}/dh2048.pem":  owner => root, group => 0, mode => 600; }
   file { "${openvpn_dir}/crl.pem":     owner => root, group => 0, mode => 644, content => template($crl); }
   file { "${openvpn_dir}/ccd":
     ensure => directory,
@@ -38,6 +42,8 @@ class openvpn::server (
     group  => 0,
     mode   => 755;
   }
+
+  file { "${openvpn_dir}/dh2048.pem":  owner => root, group => 0, mode => 600; }
 
   exec { "create dh2048.pem":
     cwd     => "${openvpn_dir}",
