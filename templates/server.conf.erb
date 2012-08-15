@@ -215,6 +215,13 @@ verb 3
 client-cert-not-required
 <% end -%>
 
+# Tell the server to use the username for indexing 
+# purposes as it would use the Common Name of a client 
+# which was authenticating via a client certificate.
+<% if username_as_common_name != '' -%>
+username-as-common-name
+<% end -%>
+
 # Enable plugins (usually for auth)
 # e g
 # plugin /usr/share/openvpn/plugin/lib/openvpn-auth-pam.so system-auth

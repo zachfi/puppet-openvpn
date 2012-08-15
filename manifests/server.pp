@@ -14,6 +14,7 @@ class openvpn::server (
     $log                      = '',
     $log_append               = '',
     $client_cert_not_required = '',
+    $username_as_common_name  = '',
     $plugins                  = '',
     $crl                      = '',
     $openvpn_dir              = $openvpn::params::openvpn_dir,
