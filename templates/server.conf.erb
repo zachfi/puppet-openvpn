@@ -96,6 +96,10 @@ push "<%= redirect_gateway %>"
 push "dhcp-option DNS <%= dns %>"
 <% end -%>
 
+<% if domain != '' -%>
+push "dhcp-option DOMAIN <%= domain %>"
+<% end -%>
+
 # Uncomment this directive to allow different
 # clients to be able to "see" each other.
 # By default, clients will only see the server.
@@ -215,11 +219,17 @@ verb 3
 client-cert-not-required
 <% end -%>
 
+
 # Tell the server to use the username for indexing 
 # purposes as it would use the Common Name of a client 
 # which was authenticating via a client certificate.
 <% if username_as_common_name != '' -%>
 username-as-common-name
+<% end -%>
+
+# Allow clients to connect more than once with the same cert
+<% if duplicate_cn != '' -%>
+duplicate-cn
 <% end -%>
 
 # Enable plugins (usually for auth)
