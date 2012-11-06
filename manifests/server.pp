@@ -22,6 +22,9 @@ class openvpn::server (
     $route                    = '',
     $server                   = "10.8.0.0 255.255.255.0",
     $username_as_common_name  = '',
+    $script_security          = '',
+    $client_connect           = '',
+    $client_disconnect        = ''
   ) inherits openvpn::params {
   include openvpn
   include openvpn::params

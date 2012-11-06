@@ -240,3 +240,16 @@ duplicate-cn
 <% elsif route != '' -%>
 plugin <%= plugins %> 
 <% end -%>
+
+<% if script_security != '' -%>
+script-security <%= script_security %> 
+<% end -%>
+
+<% if client_connect != '' -%>
+client-connect <%= client_connect %> 
+<% end -%>
+
+<% if client_disconnect != '' -%>
+client-disconnect <%= client_disconnect %> 
+<% end -%>
+
