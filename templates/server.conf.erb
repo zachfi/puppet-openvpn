@@ -165,13 +165,8 @@ comp-lzo
 #
 # You can uncomment this out on
 # non-Windows systems.
-<% if openvpn_user != '' -%>
 user  <%= openvpn_user %>
-<% end -%>
-
-<% if openvpn_group != '' -%>
 group <%= openvpn_group %>
-<% end -%>
 
 # The persist options will try to avoid
 # accessing certain resources on restart
