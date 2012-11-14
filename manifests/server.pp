@@ -1,21 +1,40 @@
 class openvpn::server (
-    $port   = '1194',
-    $proto  = 'udp',
-    $dev    = 'tun',
-    $cert   = "server.crt",
-    $key    = "server.key",
-    $ca     = "ca.crt",
-    $dh     = "dh2048.pem",
-    $server = "10.8.0.0 255.255.255.0",
-    $route  = '',
-    $cipher = "AES-192-CBC",
-    $dns    = '',
-    $crl    = ''
-  ) {
+    $ca                       = "ca.crt",
+    $cert                     = "server.crt",
+    $cipher                   = "AES-192-CBC",
+    $client_cert_not_required = '',
+    $crl                      = '',
+    $dev                      = 'tun',
+    $dh                       = "dh2048.pem",
+    $dns                      = '',
+    $domain                   = '',
+    $duplicate_cn             = '',
+    $key                      = "server.key",
+    $log                      = '',
+    $log_append               = '',
+    $openvpn_dir              = $openvpn::params::openvpn_dir,
+    $openvpn_group            = 'nobody',
+    $openvpn_user             = 'nobody',
+    $plugins                  = '',
+    $port                     = '1194',
+    $proto                    = 'udp',
+    $redirect_gateway         = '',
+    $route                    = '',
+    $server                   = "10.8.0.0 255.255.255.0",
+    $username_as_common_name  = '',
+    $script_security          = '',
+    $client_connect           = '',
+    $client_disconnect        = ''
+  ) inherits openvpn::params {
   include openvpn
   include openvpn::params
 
-  $openvpn_dir = $openvpn::params::openvpn_dir
+
+  if ( $log_append != '' ) and ( $log != '' ){
+    err("Log_append and log should not both be defined")
+  }
+
+
 
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
@@ -26,23 +45,12 @@ class openvpn::server (
     content => template("openvpn/server.conf.erb");
   }
 
-  # Set permissions on the rest
-  file { "${openvpn_dir}/ca.crt":      owner => root, group => 0, mode => 640; }
-  file { "${openvpn_dir}/${name}.crt": owner => root, group => 0, mode => 640; }
-  file { "${openvpn_dir}/${name}.key": owner => root, group => 0, mode => 600; }
-  file { "${openvpn_dir}/dh2048.pem":  owner => root, group => 0, mode => 600; }
-  file { "${openvpn_dir}/crl.pem":     owner => root, group => 0, mode => 644, content => template($crl); }
-  file { "${openvpn_dir}/ccd":
-    ensure => directory,
-    owner  => root,
-    group  => 0,
-    mode   => 755;
-  }
 
-  exec { "create dh2048.pem":
+
+  exec { "create ${dh}":
     cwd     => "${openvpn_dir}",
-    command => "/usr/bin/openssl dhparam -out dh2048.pem 2048",
-    creates => "${openvpn_dir}/dh2048.pem",
+    command => "/usr/bin/openssl dhparam -out ${dh} 2048",
+    creates => "${openvpn_dir}/${dh}",
     before  => Service["openvpn"],
   }
 
