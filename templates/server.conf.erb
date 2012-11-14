@@ -119,7 +119,9 @@ push "dhcp-option DOMAIN <%= domain %>"
 # CERTIFICATE/KEY PAIRS FOR EACH CLIENT,
 # EACH HAVING ITS OWN UNIQUE "COMMON NAME",
 # UNCOMMENT THIS LINE OUT.
-;duplicate-cn
+<% if duplicate_cn != '' -%>
+duplicate-cn
+<% end -%>
 
 # The keepalive directive causes ping-like
 # messages to be sent back and forth over
@@ -222,10 +224,6 @@ client-cert-not-required
 username-as-common-name
 <% end -%>
 
-# Allow clients to connect more than once with the same cert
-<% if duplicate_cn != '' -%>
-duplicate-cn
-<% end -%>
 
 # Enable plugins (usually for auth)
 # e g
