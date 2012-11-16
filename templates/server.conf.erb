@@ -81,6 +81,9 @@ client-config-dir ccd
 # a more specific route than the default route
 # of 0.0.0.0/0.0.0.0.
 ;push "redirect-gateway"
+<% if redirect_gateway != '' -%>
+push "<%= redirect_gateway %>"
+<% end -%>
 
 # Certain Windows-specific network settings
 # can be pushed to clients, such as DNS
@@ -91,6 +94,10 @@ client-config-dir ccd
 
 <% if dns != '' -%>
 push "dhcp-option DNS <%= dns %>"
+<% end -%>
+
+<% if domain != '' -%>
+push "dhcp-option DOMAIN <%= domain %>"
 <% end -%>
 
 # Uncomment this directive to allow different
@@ -158,8 +165,8 @@ comp-lzo
 #
 # You can uncomment this out on
 # non-Windows systems.
-user nobody
-group nobody
+user  <%= openvpn_user %>
+group <%= openvpn_group %>
 
 # The persist options will try to avoid
 # accessing certain resources on restart
@@ -180,8 +187,13 @@ status openvpn-status.log
 # "log" will truncate the log file on OpenVPN startup,
 # while "log-append" will append to it.  Use one
 # or the other (but not both).
-;log         openvpn.log
-;log-append  openvpn.log
+<% if log != '' -%>
+log  <%= log %>
+<% end -%>
+
+<% if log_append != '' -%>
+log_append  <%= log_append %>
+<% end -%>
 
 # Set the appropriate level of log
 # file verbosity.
@@ -196,3 +208,43 @@ verb 3
 # sequential messages of the same message
 # category will be output to the log.
 ;mute 20
+
+# Use password authentication to connect
+<% if client_cert_not_required != '' -%>
+client-cert-not-required
+<% end -%>
+
+
+# Tell the server to use the username for indexing 
+# purposes as it would use the Common Name of a client 
+# which was authenticating via a client certificate.
+<% if username_as_common_name != '' -%>
+username-as-common-name
+<% end -%>
+
+# Allow clients to connect more than once with the same cert
+<% if duplicate_cn != '' -%>
+duplicate-cn
+<% end -%>
+
+# Enable plugins (usually for auth)
+# e g
+# plugin /usr/share/openvpn/plugin/lib/openvpn-auth-pam.so system-auth
+<% if plugins.is_a? Array -%>
+<% plugins.each do |p| -%>plugin <%= "#{p}\n" %><% end %>
+<% elsif route != '' -%>
+plugin <%= plugins %> 
+<% end -%>
+
+<% if script_security != '' -%>
+script-security <%= script_security %> 
+<% end -%>
+
+<% if client_connect != '' -%>
+client-connect <%= client_connect %> 
+<% end -%>
+
+<% if client_disconnect != '' -%>
+client-disconnect <%= client_disconnect %> 
+<% end -%>
+
