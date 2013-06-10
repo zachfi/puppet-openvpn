@@ -2,14 +2,14 @@
 # listen on? (optional)
 ;local a.b.c.d
 
-port <%= port %>
-proto <%= proto %>
-dev <%= dev %>
-ca <%= ca %>
-cert <%= cert %>
-key <%= key %>  # This file should be kept secret
-dh <%= dh %>
-server <%= server %>
+port <%= @port %>
+proto <%= @proto %>
+dev <%= @dev %>
+ca <%= @ca %>
+cert <%= @cert %>
+key <%= @key %>  # This file should be kept secret
+dh <%= @dh %>
+server <%= @server %>
 crl-verify crl.pem
 ifconfig-pool-persist ipp.txt
 
@@ -20,10 +20,10 @@ ifconfig-pool-persist ipp.txt
 # to know to route the OpenVPN client
 # address pool (10.8.0.0/255.255.255.0)
 # back to the OpenVPN server.
-<% if route.is_a? Array -%>
-<% route.each do |r| -%>push route <%= "#{r}\n" %><% end %>
-<% elsif route != '' -%>
-push route <%= route %> 
+<% if @route.is_a? Array -%>
+<% @route.each do |r| -%>push route <%= "#{r}\n" %><% end %>
+<% elsif @route != '' -%>
+push route <%= @route %> 
 <% end -%>
 
 # To assign specific IP addresses to specific
@@ -50,7 +50,7 @@ push route <%= route %>
 # Thelonious a fixed VPN IP address of 10.9.0.1.
 # First uncomment out these lines:
 client-config-dir ccd
-;route <%= server %>
+;route <%= @server %>
 # Then add this line to ccd/Thelonious:
 #   ifconfig-push 10.9.0.1 10.9.0.2
 
@@ -81,8 +81,8 @@ client-config-dir ccd
 # a more specific route than the default route
 # of 0.0.0.0/0.0.0.0.
 ;push "redirect-gateway"
-<% if redirect_gateway != '' -%>
-push "<%= redirect_gateway %>"
+<% if @redirect_gateway != '' -%>
+push "<%= @redirect_gateway %>"
 <% end -%>
 
 # Certain Windows-specific network settings
@@ -92,12 +92,12 @@ push "<%= redirect_gateway %>"
 ;push "dhcp-option DNS 10.8.0.1"
 ;push "dhcp-option WINS 10.8.0.1"
 
-<% if dns != '' -%>
-push "dhcp-option DNS <%= dns %>"
+<% if @dns != '' -%>
+push "dhcp-option DNS <%= @dns %>"
 <% end -%>
 
-<% if domain != '' -%>
-push "dhcp-option DOMAIN <%= domain %>"
+<% if @domain != '' -%>
+push "dhcp-option DOMAIN <%= @domain %>"
 <% end -%>
 
 # Uncomment this directive to allow different
@@ -119,7 +119,7 @@ push "dhcp-option DOMAIN <%= domain %>"
 # CERTIFICATE/KEY PAIRS FOR EACH CLIENT,
 # EACH HAVING ITS OWN UNIQUE "COMMON NAME",
 # UNCOMMENT THIS LINE OUT.
-<% if duplicate_cn != '' -%>
+<% if @duplicate_cn != '' -%>
 duplicate-cn
 <% end -%>
 
@@ -151,7 +151,7 @@ keepalive 10 120
 ;cipher BF-CBC        # Blowfish (default)
 ;cipher AES-192-CBC   # AES
 ;cipher DES-EDE3-CBC  # Triple-DES
-cipher <%= cipher %>
+cipher <%= @cipher %>
 
 # Enable compression on the VPN link.
 # If you enable it here, you must also
@@ -167,8 +167,8 @@ comp-lzo
 #
 # You can uncomment this out on
 # non-Windows systems.
-user  <%= openvpn_user %>
-group <%= openvpn_group %>
+user  <%= @openvpn_user %>
+group <%= @openvpn_group %>
 
 # The persist options will try to avoid
 # accessing certain resources on restart
@@ -189,12 +189,12 @@ status openvpn-status.log
 # "log" will truncate the log file on OpenVPN startup,
 # while "log-append" will append to it.  Use one
 # or the other (but not both).
-<% if log != '' -%>
-log  <%= log %>
+<% if @log != '' -%>
+log  <%= @log %>
 <% end -%>
 
-<% if log_append != '' -%>
-log_append  <%= log_append %>
+<% if @log_append != '' -%>
+log_append  <%= @log_append %>
 <% end -%>
 
 # Set the appropriate level of log
@@ -212,7 +212,7 @@ verb 3
 ;mute 20
 
 # Use password authentication to connect
-<% if client_cert_not_required != '' -%>
+<% if @client_cert_not_required != '' -%>
 client-cert-not-required
 <% end -%>
 
@@ -220,7 +220,7 @@ client-cert-not-required
 # Tell the server to use the username for indexing 
 # purposes as it would use the Common Name of a client 
 # which was authenticating via a client certificate.
-<% if username_as_common_name != '' -%>
+<% if @username_as_common_name != '' -%>
 username-as-common-name
 <% end -%>
 
@@ -228,21 +228,21 @@ username-as-common-name
 # Enable plugins (usually for auth)
 # e g
 # plugin /usr/share/openvpn/plugin/lib/openvpn-auth-pam.so system-auth
-<% if plugins.is_a? Array -%>
-<% plugins.each do |p| -%>plugin <%= "#{p}\n" %><% end %>
-<% elsif route != '' -%>
-plugin <%= plugins %> 
+<% if @plugins.is_a? Array -%>
+<% @plugins.each do |p| -%>plugin <%= "#{p}\n" %><% end %>
+<% elsif @plugins != '' -%>
+plugin <%= @plugins %> 
 <% end -%>
 
-<% if script_security != '' -%>
-script-security <%= script_security %> 
+<% if @script_security != '' -%>
+script-security <%= @script_security %> 
 <% end -%>
 
-<% if client_connect != '' -%>
-client-connect <%= client_connect %> 
+<% if @client_connect != '' -%>
+client-connect <%= @client_connect %> 
 <% end -%>
 
-<% if client_disconnect != '' -%>
-client-disconnect <%= client_disconnect %> 
+<% if @client_disconnect != '' -%>
+client-disconnect <%= @client_disconnect %> 
 <% end -%>
 
