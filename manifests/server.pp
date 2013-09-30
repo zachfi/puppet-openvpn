@@ -8,14 +8,17 @@ class openvpn::server (
     $dh                       = "dh2048.pem",
     $dns                      = '',
     $domain                   = '',
+    $ccd                      = $openvpn::params::ccd,
     $duplicate_cn             = '',
     $key                      = "server.key",
     $log                      = '',
     $log_append               = '',
+    $status_log               = 'openvpn-status.log',
     $openvpn_dir              = $openvpn::params::openvpn_dir,
     $openvpn_group            = 'nobody',
     $openvpn_user             = 'nobody',
     $plugins                  = '',
+    $verb                     = '3',
     $port                     = '1194',
     $proto                    = 'udp',
     $redirect_gateway         = '',
@@ -24,7 +27,9 @@ class openvpn::server (
     $username_as_common_name  = '',
     $script_security          = '',
     $client_connect           = '',
-    $client_disconnect        = ''
+    $client_disconnect        = '',
+    $tls_verify               = '',
+    $custom_options           = []
   ) inherits openvpn::params {
   include openvpn
   include openvpn::params

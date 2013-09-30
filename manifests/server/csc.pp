@@ -6,7 +6,7 @@ define openvpn::server::csc (
   include openvpn::params
 
   file {
-    "${::openvpn::params::openvpn_dir}/ccd/${name}":
+    "${::openvpn::params::openvpn_dir}/${::openvpn::server::ccd}/${name}":
       owner   => root,
       group   => 0,
       mode    => 0644,

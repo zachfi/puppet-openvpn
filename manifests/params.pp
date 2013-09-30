@@ -11,5 +11,6 @@ class openvpn::params {
     }
   }
 
+  $ccd = 'ccd'
 }
 
