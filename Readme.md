@@ -1,5 +1,7 @@
 # OpenVPN
 
+[![Build Status](https://travis-ci.org/xaque208/puppet-openvpn.png)](https://travis-ci.org/xaque208/puppet-openvpn)
+
 A puppet module for the OpenVPN VPN server.
 
 ## Supported Platforms
