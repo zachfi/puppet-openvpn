@@ -2,12 +2,13 @@
 
 [![Build Status](https://travis-ci.org/xaque208/puppet-openvpn.png)](https://travis-ci.org/xaque208/puppet-openvpn)
 
-A puppet module for the OpenVPN VPN server.
+A Puppet module to configure some OpenVPN.
 
 ## Supported Platforms
 
 * Debian
 * FreeBSD
+* OpenVPN
 
 ## Usage
 
@@ -24,26 +25,25 @@ A puppet module for the OpenVPN VPN server.
       crl => 'mysite/crl.pem',
     }
 
-
 ### Client Specific Configurations
 
 Clients can have a more specific and static configuration.
 
-    openvpn::server::csc {
-      "srv1.example.com":
-        content => "ifconfig-push 10.0.0.50 10.0.0.51",
+    openvpn::server::csc { "srv1.example.com":
+      content => "ifconfig-push 10.0.0.50 10.0.0.51",
     }
 
 ### Client Setup
 
 Clients can be connected to more than one server at a time.
 
-    openvpn::client {
-      "node_${hostname}_dc1":
-        server => "vpn.dc1.example.com",
-        cert   => "node_${hostname}";
-      "node_${hostname}_office":
-        server => "vpn.office.example.com",
-        cert   => "node_${hostname}";
+    openvpn::client { "node_${hostname}_dc1":
+      server => "vpn.dc1.example.com",
+      cert   => "node_${hostname}";
+    }
+
+    openvpn::client { "node_${hostname}_office":
+      server => "vpn.office.example.com",
+      cert   => "node_${hostname}";
     }
 

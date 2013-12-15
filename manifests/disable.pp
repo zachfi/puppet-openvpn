@@ -1,7 +1,9 @@
+# CLass: openvpn::disable
+#
+# Disable and remove OpenVPN
+#
 class openvpn::disable {
 
-  package { "openvpn": ensure => absent; }
-  service { "openvpn": ensure => stopped, enable => false; }
-
+  service { 'openvpn': ensure => stopped, enable => false; }->
+  package { 'openvpn': ensure => absent; }
 }
-

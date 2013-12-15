@@ -1,19 +1,21 @@
-class openvpn {
+# Class: openvpn
+#
+# Install OpenVPN and configure the service to start
+class openvpn(
+  $openvpn_dir  = $openvpn::params::openvpn_dir,
+  $package_name = $openvpn::params::package_name,
+) inherits openvpn::params {
 
-  include openvpn::params
+  package { $package_name:
+    ensure => installed,
+  }->
 
-  $openvpn_dir = $openvpn::params::openvpn_dir
-  $package     = $openvpn::params::package
+  file { $openvpn_dir:
+    ensure => directory,
+  }->
 
-  package { $package: ensure => installed; }
-
-  service {
-    "openvpn":
-      enable  => true,
-      ensure  => running,
-      require => Package["$package"],
+  service { 'openvpn':
+    ensure  => running,
+    enable  => true,
   }
-
-  file { $openvpn_dir: ensure => directory; }
-
 }
