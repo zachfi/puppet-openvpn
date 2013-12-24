@@ -98,7 +98,9 @@ push "<%= @redirect_gateway %>"
 ;push "dhcp-option DNS 10.8.0.1"
 ;push "dhcp-option WINS 10.8.0.1"
 
-<% if @dns != '' -%>
+<% if @dns.is_a? Array -%>
+<% @dns.each do |d| -%>push "dhcp-option DNS <%= "#{d}\"\n" %><% end %>
+<% elsif @dns != '' -%>
 push "dhcp-option DNS <%= @dns %>"
 <% end -%>
 
