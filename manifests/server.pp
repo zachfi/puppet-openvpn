@@ -9,6 +9,7 @@ class openvpn::server (
   $client_cert_not_required = '',
   $crl                      = '',
   $dev                      = 'tun',
+  $dev_type                 = '',
   $dh                       = 'dh2048.pem',
   $dns                      = '',
   $domain                   = '',

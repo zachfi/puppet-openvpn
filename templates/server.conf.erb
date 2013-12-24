@@ -5,6 +5,9 @@
 port <%= @port %>
 proto <%= @proto %>
 dev <%= @dev %>
+<% if @dev_type != '' -%>
+dev-type <%= @dev_type %>
+<% end -%>
 ca <%= @ca %>
 cert <%= @cert %>
 key <%= @key %>  # This file should be kept secret
