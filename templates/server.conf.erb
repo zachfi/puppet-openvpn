@@ -15,7 +15,9 @@ ifconfig-pool-persist ipp.txt
 <% else -%>
 mode server
 <% end -%>
-crl-verify crl.pem
+<% if @crl != '' -%>
+crl-verify <%= @crl %>
+<% end -%>
 
 # Push routes to the client to allow it
 # to reach other private subnets behind
