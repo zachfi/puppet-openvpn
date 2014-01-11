@@ -1,5 +1,5 @@
-name    'puppet-openvpn'
-version '0.0.2'
+name    'zleslie-openvpn'
+version '1.0.0'
 source 'git://github.com/xaque208/puppet-openvpn.git'
 author 'zleslie'
 license 'Apache License Version 2.0'
