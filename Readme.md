@@ -8,6 +8,7 @@ A Puppet module to manage the OpenVPN client and server.
 
 * Debian
 * FreeBSD
+* OpenBSD
 
 ## Usage
 
