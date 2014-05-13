@@ -35,7 +35,7 @@ class openvpn(
     }
     file_line {"enable_openvpn":
       path => "/etc/rc.conf.local",
-      line => 'openvpn_flags="--cd ${openvpn_dir} --config ${openvpn_dir}/openvpn.conf --daemon"'
+      line => "openvpn_flags=\"--cd ${openvpn_dir} --config ${openvpn_dir}/openvpn.conf --daemon\""
     }
   } else {
     service {
