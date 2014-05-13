@@ -113,6 +113,10 @@ push "dhcp-option DNS <%= @dns %>"
 push "dhcp-option DOMAIN <%= @domain %>"
 <% end -%>
 
+<% if wins != '' -%>
+push "dhcp-option WINS <%= @wins %>"
+<% end -%>
+
 # Uncomment this directive to allow different
 # clients to be able to "see" each other.
 # By default, clients will only see the server.
