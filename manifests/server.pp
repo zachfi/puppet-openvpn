@@ -49,7 +49,8 @@ class openvpn::server (
     owner   => root,
     group   => 0,
     mode    => '0600',
-    content => template('openvpn/server.conf.erb');
+    content => template('openvpn/server.conf.erb'),
+    notify  => Service['openvpn'],
   }
 
   exec { "create ${dh}":
