@@ -13,6 +13,7 @@ class openvpn::server (
   $dh                       = 'dh2048.pem',
   $dns                      = '',
   $domain                   = '',
+  $wins                     = '',
   $ccd                      = $openvpn::params::ccd,
   $duplicate_cn             = '',
   $key                      = 'server.key',
