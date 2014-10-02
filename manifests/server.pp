@@ -56,7 +56,7 @@ class openvpn::server (
 
   exec { "create ${dh}":
     cwd     => $openvpn_dir,
-    command => "/usr/bin/openssl dhparam -out ${dh} 2048",
+    command => "${openssl} dhparam -out ${dh} 2048",
     creates => "${openvpn_dir}/${dh}",
     before  => Service['openvpn'],
   }
