@@ -40,6 +40,8 @@ class openvpn::server (
 
   include openvpn
 
+  $openssl = $openvpn::params::openssl
+
   if ( $log_append != '' ) and ( $log != '' ){
     err('Log_append and log should not both be defined')
   }
