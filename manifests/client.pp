@@ -7,6 +7,7 @@ define openvpn::client (
   $port  = '1194',
   $proto = 'udp',
   $dev   = 'tun',
+  $ca    = 'ca.crt',
   $cert  = $name
 ) {
 

@@ -6,7 +6,7 @@ resolv-retry infinite
 nobind
 persist-key
 persist-tun
-ca ca.crt
+ca <%= @ca %>
 cert <%= @cert %>.crt
 key <%= @cert %>.key
 ns-cert-type server
