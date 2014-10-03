@@ -10,6 +10,7 @@ define openvpn::client (
   $ca             = 'ca.crt',
   $cert           = $name,
   $ns_cert_type   = 'server',
+  $cipher         = 'AES-192-CBC',
 ) {
 
   include openvpn
