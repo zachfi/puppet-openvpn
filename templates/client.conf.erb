@@ -13,3 +13,7 @@ ns-cert-type <%= @ns_cert_type %>
 cipher <%= @cipher %>
 comp-lzo
 verb <%= @verb %>
+# custom options
+<% @custom_options.each do |custom_option| -%>
+<%= custom_option %>
+<% end -%>
