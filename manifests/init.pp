@@ -12,6 +12,10 @@ class openvpn(
 
   file { $openvpn_dir:
     ensure => directory,
+  }->
+
+  file { "${openvpn_dir}/${ccd}":
+    ensure => directory,
   }
 
   if $::operatingsystem == 'OpenBSD' {
