@@ -4,6 +4,7 @@
 #
 define openvpn::client (
   $server,
+  $openvpn_dir    = '/etc/openvpn',
   $port           = '1194',
   $proto          = 'udp',
   $dev            = 'tun',
@@ -15,7 +16,7 @@ define openvpn::client (
 
   include openvpn
 
-  file { "/etc/openvpn/${server}.conf":
+  file { "${openvpn_dir}/${server}.conf":
     owner   => root,
     group   => 0,
     mode    => '0640',
