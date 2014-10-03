@@ -32,9 +32,9 @@ class openvpn(
       require  => [File['/etc/rc.d/openvpn'], File[$openvpn_dir]],
     }
     file {'/etc/rc.d/openvpn':
-      owner => 'root',
-      group => 'wheel',
-      mode  => '0755',
+      owner  => 'root',
+      group  => 'wheel',
+      mode   => '0755',
       source => 'puppet:///modules/openvpn/openvpn-rc.d',
     }
     file_line {'enable_openvpn':
