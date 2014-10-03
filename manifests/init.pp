@@ -14,7 +14,7 @@ class openvpn(
     ensure => directory,
   }->
 
-  file { "${openvpn_dir}/${ccd}":
+  file { "${openvpn_dir}/${openvpn::params::ccd}":
     ensure => directory,
   }
 
