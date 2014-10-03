@@ -22,11 +22,11 @@ class openvpn(
     # ssh service definition for OpenBSD, there is no
     # init script for this on OpenBSD
     service { 'openvpn':
+      ensure   => 'running',
       start    => '/etc/rc.d/openvpn start',
       stop     => '/etc/rc.d/openvpn stop',
       status   => '/etc/rc.d/openvpn check',
       restart  => '/etc/rc.d/openvpn restart',
-      ensure   => 'running',
       # the provider selected by puppet 2.7 does not work
       provider => 'base',
       require  => [File['/etc/rc.d/openvpn'], File[$openvpn_dir]],
@@ -44,8 +44,8 @@ class openvpn(
   } else {
     service {
       'openvpn':
-        enable  => true,
         ensure  => running,
+        enable  => true,
         require => File[$openvpn_dir],
     }
   }
