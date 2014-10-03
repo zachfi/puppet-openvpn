@@ -31,19 +31,19 @@ class openvpn(
       provider => 'base',
       require  => [File['/etc/rc.d/openvpn'], File[$openvpn_dir]],
     }
-    file {"/etc/rc.d/openvpn":
-      owner => "root",
-      group => "wheel",
-      mode  => "0755",
-      source => "puppet:///modules/openvpn/openvpn-rc.d",
+    file {'/etc/rc.d/openvpn':
+      owner => 'root',
+      group => 'wheel',
+      mode  => '0755',
+      source => 'puppet:///modules/openvpn/openvpn-rc.d',
     }
-    file_line {"enable_openvpn":
-      path => "/etc/rc.conf.local",
+    file_line {'enable_openvpn':
+      path => '/etc/rc.conf.local',
       line => "openvpn_flags=\"--cd ${openvpn_dir} --config ${openvpn_dir}/openvpn.conf --daemon\""
     }
   } else {
     service {
-      "openvpn":
+      'openvpn':
         enable  => true,
         ensure  => running,
         require => File[$openvpn_dir],
