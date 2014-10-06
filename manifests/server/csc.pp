@@ -8,7 +8,7 @@ define openvpn::server::csc (
   file { "${::openvpn::params::openvpn_dir}/${::openvpn::server::ccd}/${name}":
     owner   => root,
     group   => 0,
-    mode    => '0640',
+    mode    => '0644',
     content => $content,
   }
 }
