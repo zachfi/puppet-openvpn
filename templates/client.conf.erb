@@ -6,10 +6,14 @@ resolv-retry infinite
 nobind
 persist-key
 persist-tun
-ca ca.crt
+ca <%= @ca %>
 cert <%= @cert %>.crt
 key <%= @cert %>.key
-ns-cert-type server
-cipher AES-192-CBC
+ns-cert-type <%= @ns_cert_type %>
+cipher <%= @cipher %>
 comp-lzo
-verb 3
+verb <%= @verb %>
+# custom options
+<% @custom_options.each do |custom_option| -%>
+<%= custom_option %>
+<% end -%>
