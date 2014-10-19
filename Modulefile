@@ -1,8 +1,0 @@
-name    'zleslie-openvpn'
-version '1.0.0'
-source 'git://github.com/xaque208/puppet-openvpn.git'
-author 'zleslie'
-license 'Apache License Version 2.0'
-summary 'Puppet powered OpenVPN'
-description 'A module to deploy and manage OpenVPN.'
-project_page 'https://github.com/xaque208/puppet-openvpn'

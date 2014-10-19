@@ -1,0 +1,36 @@
+{
+  "name": "zleslie-openvpn",
+  "version": "1.0.0",
+  "author": "zleslie",
+  "summary": "Puppet powered OpenVPN",
+  "license": "Apache License Version 2.0",
+  "source": "git://github.com/xaque208/puppet-openvpn.git",
+  "project_page": "https://github.com/xaque208/puppet-openvpn",
+  "issues_url": "https://github.com/xaque208/puppet-openvpn/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "10",
+        "9.3",
+        "8.4"
+      ]
+    },
+    {
+      "operatingsystem": "OpenBSD",
+      "operatingsystemrelease": [
+        "5.5"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.2.0 < 3.4.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ]
+}
