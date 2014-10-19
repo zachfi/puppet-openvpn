@@ -40,6 +40,8 @@ class openvpn::server (
 
   include openvpn
 
+  $openssl = $openvpn::params::openssl
+
   if ( $log_append != '' ) and ( $log != '' ){
     err('Log_append and log should not both be defined')
   }
@@ -56,7 +58,7 @@ class openvpn::server (
 
   exec { "create ${dh}":
     cwd     => $openvpn_dir,
-    command => "/usr/bin/openssl dhparam -out ${dh} 2048",
+    command => "${openssl} dhparam -out ${dh} 2048",
     creates => "${openvpn_dir}/${dh}",
     before  => Service['openvpn'],
   }
