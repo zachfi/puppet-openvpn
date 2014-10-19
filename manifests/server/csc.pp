@@ -1,9 +1,9 @@
 # CSC: Client specific configuration
 define openvpn::server::csc (
   $content,
-  $owner => 'root',
-  $group => 0,
-  $mode  => '0640'
+  $owner = 'root',
+  $group = 0,
+  $mode  = '0640'
 ) {
 
   include openvpn::params
