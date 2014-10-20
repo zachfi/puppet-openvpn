@@ -1,6 +1,6 @@
 {
   "name": "zleslie-openvpn",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "zleslie",
   "summary": "Puppet powered OpenVPN",
   "license": "Apache License Version 2.0",
