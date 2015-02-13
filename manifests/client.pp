@@ -28,7 +28,7 @@ define openvpn::client (
     content => template('openvpn/client.conf.erb'),
   }
 
-  if $manage_service {
+  if $openvpn::manage_service {
     File["${openvpn_dir}/${server}.conf"] ~>
     Service['openvpn']
   }
