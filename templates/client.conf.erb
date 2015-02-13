@@ -9,6 +9,15 @@ persist-tun
 ca <%= @ca %>
 cert <%= @cert %>.crt
 key <%= @cert %>.key
+<% if @tls_auth_key -%>
+tls-auth <%= @tls_auth_key %> 1
+<% end -%>
+<% if @openvpn_user -%>
+user  <%= @openvpn_user %>
+<% end -%>
+<% if @openvpn_group -%>
+group <%= @openvpn_group %>
+<% end -%>
 ns-cert-type <%= @ns_cert_type %>
 cipher <%= @cipher %>
 comp-lzo

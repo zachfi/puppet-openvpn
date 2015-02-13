@@ -13,7 +13,10 @@ define openvpn::client (
   $ns_cert_type   = 'server',
   $verb           = 3,
   $cipher         = 'AES-192-CBC',
-  $custom_options = []
+  $openvpn_group  = $openvpn::params::openvpn_group,
+  $openvpn_user   = $openvpn::params::openvpn_user,
+  $tls_auth_key   = undef,
+  $custom_options = [],
 ) {
 
   include openvpn
@@ -23,6 +26,10 @@ define openvpn::client (
     group   => 0,
     mode    => '0640',
     content => template('openvpn/client.conf.erb'),
-    notify  => Service['openvpn'],
+  }
+
+  if $manage_service {
+    File["${openvpn_dir}/${server}.conf"] ~>
+    Service['openvpn']
   }
 }
