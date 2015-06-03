@@ -5,12 +5,12 @@
 class openvpn::params {
 
   case $::operatingsystem {
-    'freebsd': {
+    'FreeBSD': {
       $openvpn_dir    = '/usr/local/etc/openvpn'
       $package_name   = 'security/openvpn'
       $manage_service = true
-      $openvpn_user    = undef
-      $openvpn_group   = undef
+      $openvpn_user   = undef
+      $openvpn_group  = undef
     }
     'OpenBSD': {
       $openvpn_dir    = '/etc/openvpn'

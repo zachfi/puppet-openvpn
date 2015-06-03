@@ -30,6 +30,20 @@ class { "openvpn::server":
 }
 ```
 
+To include pushing IPv6 routes, the `route_ipv6` and the `server_ipv6`
+parameters have been added to the `openvpn::server` class.
+
+``` Puppet
+class { "openvpn::server":
+  server_ipv6 => "10.0.0.0 255.255.255.0",
+  route_ipv6  => [
+    "fc00::/64",
+    ],
+  dns => 'fc00::',
+  crl => 'mysite/crl.pem',
+}
+```
+
 ### Basic Client Setup
 
 Clients can be configured using the `openvpn::client` defined type.  Multiple
@@ -63,4 +77,5 @@ openvpn::server::csc { "srv1.example.com":
 
 * OSX Client Configuration
 * Certificate management (piggyback on puppet?)
+* IPv6 Route Support
 
