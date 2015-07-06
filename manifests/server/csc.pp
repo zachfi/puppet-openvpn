@@ -7,6 +7,9 @@ define openvpn::server::csc (
 ) {
 
   include openvpn::params
+  $openvpn_dir    = $openvpn::params::openvpn_dir
+
+  realize(File["${openvpn_dir}/ccd"])
 
   file { "${::openvpn::params::openvpn_dir}/${::openvpn::server::ccd}/${name}":
     owner   => $owner,

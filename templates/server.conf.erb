@@ -18,7 +18,13 @@ ifconfig-pool-persist ipp.txt
 <% else -%>
 mode server
 <% end -%>
-<% if @crl != '' -%>
+
+# IPv6 Server
+<% if @server_ipv6 -%>
+server-ipv6 <%= @server_ipv6 %>
+<% end -%>
+
+<% if @crl -%>
 crl-verify <%= @crl %>
 <% end -%>
 
@@ -29,11 +35,15 @@ crl-verify <%= @crl %>
 # to know to route the OpenVPN client
 # address pool (10.8.0.0/255.255.255.0)
 # back to the OpenVPN server.
-<% if @route.is_a? Array -%>
-<% @route.each do |r| -%>push route <%= "#{r}\n" %><% end %>
-<% elsif @route != '' -%>
-push route <%= @route %> 
+<% Array(@route).each do |r| -%>
+push route <%= r %>
 <% end -%>
+
+<% Array(@route_ipv6).each do |r| -%>
+push "route-ipv6 <%= r %>"
+<% end -%>
+
+topology subnet
 
 # To assign specific IP addresses to specific
 # clients or if a connecting client has a private
@@ -160,7 +170,9 @@ keepalive 10 120
 # a copy of this key.
 # The second parameter should be '0'
 # on the server and '1' on the clients.
-;tls-auth ta.key 0 # This file is secret
+<% if @tls_auth -%>
+tls-auth ta.key 0 # This file is secret
+<% end -%>
 
 # Select a cryptographic cipher.
 # This config item must be copied to
@@ -168,7 +180,9 @@ keepalive 10 120
 ;cipher BF-CBC        # Blowfish (default)
 ;cipher AES-192-CBC   # AES
 ;cipher DES-EDE3-CBC  # Triple-DES
+<% if @cipher -%>
 cipher <%= @cipher %>
+<% end -%>
 
 # Enable compression on the VPN link.
 # If you enable it here, you must also
