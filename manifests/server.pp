@@ -65,9 +65,9 @@ class openvpn::server (
   }
 
   if $tls_auth {
-    exec { "create tls_auth key":
+    exec { 'create tls_auth key':
       cwd     => $openvpn_dir,
-      command => "openvpn --genkey --secret ta.key",
+      command => 'openvpn --genkey --secret ta.key',
       creates => "${openvpn_dir}/ta.key",
     }
   }
