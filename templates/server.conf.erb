@@ -123,7 +123,7 @@ push "dhcp-option DNS <%= @dns %>"
 push "dhcp-option DOMAIN <%= @domain %>"
 <% end -%>
 
-<% if wins != '' -%>
+<% if @wins != '' -%>
 push "dhcp-option WINS <%= @wins %>"
 <% end -%>
 
