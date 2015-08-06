@@ -11,6 +11,7 @@ class openvpn::params {
       $manage_service = true
       $openvpn_user   = undef
       $openvpn_group  = undef
+      $openssl        = '/usr/bin/openssl'
     }
     'OpenBSD': {
       $openvpn_dir    = '/etc/openvpn'
@@ -18,6 +19,11 @@ class openvpn::params {
       $manage_service = false
       $openvpn_user   = '_openvpn'
       $openvpn_group  = '_openvpn'
+      if ( $::operatingsystemrelease < 5.7 ) {
+        $openssl = '/usr/sbin/openssl'
+      } else {
+        $openssl ='/usr/bin/openssl'
+      }
     }
     default: {
       $openvpn_dir    = '/etc/openvpn'
@@ -25,6 +31,7 @@ class openvpn::params {
       $manage_service = true
       $openvpn_user   = 'nobody'
       $openvpn_group  = 'nobody'
+      $openssl        = '/usr/bin/openssl'
     }
   }
 
