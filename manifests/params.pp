@@ -19,7 +19,7 @@ class openvpn::params {
       $manage_service = false
       $openvpn_user   = '_openvpn'
       $openvpn_group  = '_openvpn'
-      if ( $::operatingsystemrelease < 5.7 ) {
+      if ( versioncmp($::kernelversion, '5.7') < 0 ) {
         $openssl = '/usr/sbin/openssl'
       } else {
         $openssl ='/usr/bin/openssl'
