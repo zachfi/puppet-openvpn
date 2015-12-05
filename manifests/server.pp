@@ -72,7 +72,7 @@ class openvpn::server (
     }
   }
 
-  if $openvpn::params::manage_service {
+  if $openvpn::manage_service {
     Exec["create ${dh}"] ~>
     Service['openvpn']
 
