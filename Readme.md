@@ -1,6 +1,6 @@
 # OpenVPN
 
-[![Build Status](https://travis-ci.org/xaque208/puppet-openvpn.png)](https://travis-ci.org/xaque208/puppet-openvpn)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/zleslie/openvpn.svg)]() [![Build Status](https://travis-ci.org/xaque208/puppet-openvpn.svg?branch=master)](https://travis-ci.org/xaque208/puppet-openvpn)
 
 A Puppet module to manage the OpenVPN client and server.
 
