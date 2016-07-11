@@ -3,6 +3,7 @@
 # Install and configure the OpenVPN server
 #
 class openvpn::server (
+  $auth                     = 'SHA1',
   $ca                       = 'ca.crt',
   $cert                     = 'server.crt',
   $cipher                   = undef,

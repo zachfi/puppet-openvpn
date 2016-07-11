@@ -174,6 +174,16 @@ keepalive 10 120
 tls-auth ta.key 0 # This file is secret
 <% end -%>
 
+# Authenticate packets with HMAC using message digest algorithm
+# alg.  (The default is SHA1 ).
+# For more information on HMAC see
+#   http://www.cs.ucsd.edu/users/mihir/papers/hmac.html
+# Authenticate packets with HMAC using message digest algorithm
+# To check the available algorithms see: openvpn --show-digests
+<% if @auth -%>
+auth <%= @auth %>
+<% end -%>
+
 # Select a cryptographic cipher.
 # This config item must be copied to
 # the client config file as well.

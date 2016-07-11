@@ -4,6 +4,7 @@
 #
 define openvpn::client (
   $server,
+  $auth           = 'SHA1',
   $openvpn_dir    = '/etc/openvpn',
   $port           = '1194',
   $proto          = 'udp',
