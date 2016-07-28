@@ -14,6 +14,7 @@ define openvpn::client (
   $ns_cert_type   = 'server',
   $verb           = 3,
   $cipher         = 'AES-192-CBC',
+  $compression    = 'lzo',
   $openvpn_group  = $openvpn::params::openvpn_group,
   $openvpn_user   = $openvpn::params::openvpn_user,
   $tls_auth_key   = undef,

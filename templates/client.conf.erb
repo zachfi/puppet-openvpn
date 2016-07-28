@@ -21,9 +21,13 @@ user  <%= @openvpn_user %>
 <% if @openvpn_group -%>
 group <%= @openvpn_group %>
 <% end -%>
+<% if @ns_cert_type -%>
 ns-cert-type <%= @ns_cert_type %>
+<% end -%>
 cipher <%= @cipher %>
-comp-lzo
+<% if @compression -%>
+comp-<%= @compression %>
+<% end -%>
 verb <%= @verb %>
 # custom options
 <% @custom_options.each do |custom_option| -%>
