@@ -8,6 +8,7 @@ class openvpn::server (
   $cert                     = 'server.crt',
   $cipher                   = undef,
   $client_cert_not_required = '',
+  $client_to_client         = false,
   $crl                      = undef,
   $dev                      = 'tun',
   $dev_type                 = '',
