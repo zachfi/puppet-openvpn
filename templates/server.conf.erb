@@ -18,6 +18,9 @@ ifconfig-pool-persist ipp.txt
 <% else -%>
 mode server
 <% end -%>
+<% if @ifconfig != '' -%>
+ifconfig <%= @ifconfig %>
+<% end -%>
 
 # IPv6 Server
 <% if @server_ipv6 -%>
@@ -43,8 +46,10 @@ push route <%= r %>
 push "route-ipv6 <%= r %>"
 <% end -%>
 
-topology subnet
-
+topology <%= @topology %>
+<% if @topology == "p2p" -%>
+push "topology <%= @topology %>"
+<% end -%>
 # To assign specific IP addresses to specific
 # clients or if a connecting client has a private
 # subnet behind it that should also have VPN access,
