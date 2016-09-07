@@ -45,10 +45,11 @@ push route <%= r %>
 <% Array(@route_ipv6).each do |r| -%>
 push "route-ipv6 <%= r %>"
 <% end -%>
-
+<% if @topology != '' -%>
 topology <%= @topology %>
 <% if @topology == "p2p" -%>
 push "topology <%= @topology %>"
+<% end -%>
 <% end -%>
 # To assign specific IP addresses to specific
 # clients or if a connecting client has a private
