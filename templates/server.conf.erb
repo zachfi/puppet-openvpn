@@ -18,6 +18,9 @@ ifconfig-pool-persist ipp.txt
 <% else -%>
 mode server
 <% end -%>
+<% if @ifconfig != '' -%>
+ifconfig <%= @ifconfig %>
+<% end -%>
 
 # IPv6 Server
 <% if @server_ipv6 -%>
@@ -42,9 +45,12 @@ push route <%= r %>
 <% Array(@route_ipv6).each do |r| -%>
 push "route-ipv6 <%= r %>"
 <% end -%>
-
-topology subnet
-
+<% if @topology != '' -%>
+topology <%= @topology %>
+<% if @topology == "p2p" -%>
+push "topology <%= @topology %>"
+<% end -%>
+<% end -%>
 # To assign specific IP addresses to specific
 # clients or if a connecting client has a private
 # subnet behind it that should also have VPN access,
@@ -133,8 +139,11 @@ push "dhcp-option WINS <%= @wins %>"
 # To force clients to only see the server, you
 # will also need to appropriately firewall the
 # server's TUN/TAP interface.
-;client-to-client
 
+;client-to-client
+<% if @client_to_client -%>
+client-to-client
+<% end -%>
 # Uncomment this directive if multiple clients
 # might connect with the same certificate/key
 # files or common names.  This is recommended
