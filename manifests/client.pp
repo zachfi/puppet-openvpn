@@ -33,5 +33,16 @@ define openvpn::client (
   if $openvpn::params::manage_service {
     File["${openvpn_dir}/${server}.conf"] ~>
     Service['openvpn']
+
+    if $openvpn::params::manage_systemd_unit {
+      service { "openvpn@${server}":
+        ensure  => running,
+        enable  => true,
+        require => File[$openvpn_dir],
+      }
+
+      File["${openvpn_dir}/${server}.conf"] ~>
+      Service["openvpn@${server}"]
+    }
   }
 }
