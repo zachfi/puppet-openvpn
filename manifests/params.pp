@@ -35,5 +35,17 @@ class openvpn::params {
     }
   }
 
+  case $::lsbdistcodename {
+    'xenial', 'jessie': {
+      # On Ubuntu Xenial and Debian Jessie, starting the 'openvpn' service doesn't connect a client
+      # the 'openvpn@<connection name>' service needs to be started, where <connection name> is
+      # the name of the config file in /etc/openvpn, minus the .conf extension.
+      $manage_systemd_unit = true
+    }
+    default: {
+      $manage_systemd_unit = false
+    }
+  }
+
   $ccd = 'ccd'
 }
