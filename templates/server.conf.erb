@@ -125,7 +125,9 @@ push "<%= @redirect_gateway %>"
 push "dhcp-option DNS <%= @dns %>"
 <% end -%>
 
-<% if @domain != '' -%>
+<% if @domain.is_a? Array -%>
+<% @domain.each do |d| -%>push "dhcp-option DOMAIN <%= "#{d}\"\n" %><% end %>
+<% elsif @domain != '' -%>
 push "dhcp-option DOMAIN <%= @domain %>"
 <% end -%>
 
