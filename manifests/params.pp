@@ -35,7 +35,13 @@ class openvpn::params {
     }
   }
 
-  case $::lsbdistcodename {
+  if defined('$::lsbdistcodename') {
+    $_dist_code = $::lsbdistcodename
+  } else {
+    $_dist_code = 'default'
+  }
+
+  case $_dist_code {
     'xenial', 'jessie': {
       # On Ubuntu Xenial and Debian Jessie, starting the 'openvpn' service doesn't connect a client
       # the 'openvpn@<connection name>' service needs to be started, where <connection name> is
