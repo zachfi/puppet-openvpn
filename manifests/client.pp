@@ -15,13 +15,25 @@ define openvpn::client (
   $verb           = 3,
   $cipher         = 'AES-192-CBC',
   $compression    = 'lzo',
-  $openvpn_group  = $openvpn::params::openvpn_group,
-  $openvpn_user   = $openvpn::params::openvpn_user,
+  $openvpn_group  = '',
+  $openvpn_user   = '',
   $tls_auth_key   = undef,
   $custom_options = [],
 ) {
 
   include openvpn
+
+  if $openvpn_group != '' {
+    $_openvpn_group = $openvpn_group
+  } else {
+    $_openvpn_group = $openvpn::params::openvpn_group
+  }
+
+  if $openvpn_user != '' {
+    $_openvpn_user = $openvpn_user
+  } else {
+    $_openvpn_user = $openvpn::params::openvpn_user
+  }
 
   file { "${openvpn_dir}/${server}.conf":
     owner   => root,

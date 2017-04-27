@@ -15,11 +15,11 @@ tls-auth <%= @tls_auth_key %> 1
 <% if @auth -%>
 auth <%= @auth %>
 <% end -%>
-<% if @openvpn_user -%>
-user  <%= @openvpn_user %>
+<% if @_openvpn_user -%>
+user  <%= @_openvpn_user %>
 <% end -%>
-<% if @openvpn_group -%>
-group <%= @openvpn_group %>
+<% if @_openvpn_group -%>
+group <%= @_openvpn_group %>
 <% end -%>
 <% if @ns_cert_type -%>
 ns-cert-type <%= @ns_cert_type %>
