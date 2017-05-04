@@ -45,7 +45,7 @@ class openvpn::server (
   $openvpn_user             = $openvpn::params::openvpn_user,
 ) inherits openvpn::params {
 
-  include openvpn
+  include ::openvpn
 
   $openssl = $openvpn::params::openssl
 
@@ -77,10 +77,10 @@ class openvpn::server (
   }
 
   if $openvpn::manage_service {
-    Exec["create ${dh}"] ~>
-    Service['openvpn']
+    Exec["create ${dh}"]
+    ~> Service['openvpn']
 
-    File["${openvpn_dir}/openvpn.conf"] ~>
-    Service['openvpn']
+    File["${openvpn_dir}/openvpn.conf"]
+    ~> Service['openvpn']
   }
 }

@@ -21,7 +21,7 @@ define openvpn::client (
   $custom_options = [],
 ) {
 
-  include openvpn
+  include ::openvpn
 
   file { "${openvpn_dir}/${server}.conf":
     owner   => root,
@@ -31,8 +31,8 @@ define openvpn::client (
   }
 
   if $openvpn::params::manage_service {
-    File["${openvpn_dir}/${server}.conf"] ~>
-    Service['openvpn']
+    File["${openvpn_dir}/${server}.conf"]
+    ~> Service['openvpn']
 
     if $openvpn::params::manage_systemd_unit {
       service { "openvpn@${server}":
@@ -41,8 +41,8 @@ define openvpn::client (
         require => File[$openvpn_dir],
       }
 
-      File["${openvpn_dir}/${server}.conf"] ~>
-      Service["openvpn@${server}"]
+      File["${openvpn_dir}/${server}.conf"]
+      ~> Service["openvpn@${server}"]
     }
   }
 }

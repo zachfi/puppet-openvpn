@@ -10,9 +10,9 @@ class openvpn(
 
   package { $package_name:
     ensure => installed,
-  }->
+  }
 
-  file { $openvpn_dir:
+  -> file { $openvpn_dir:
     ensure => directory,
   }
 
