@@ -1,4 +1,4 @@
-class { 'openvpn::server':
+class { '::openvpn::server':
   server => '10.0.0.0 255.255.255.0',
   route  => [
     '10.0.1.0 255.255.255.0',

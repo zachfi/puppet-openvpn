@@ -4,6 +4,6 @@
 #
 class openvpn::disable {
 
-  service { 'openvpn': ensure => stopped, enable => false; }->
-  package { 'openvpn': ensure => absent; }
+  service { 'openvpn': ensure => stopped, enable => false; }
+  -> package { 'openvpn': ensure => absent; }
 }
