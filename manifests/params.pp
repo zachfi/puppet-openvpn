@@ -25,6 +25,14 @@ class openvpn::params {
         $openssl ='/usr/bin/openssl'
       }
     }
+    'Debian','Ubuntu': {
+      $openvpn_dir    = '/etc/openvpn'
+      $package_name   = 'openvpn'
+      $manage_service = true
+      $openvpn_user   = 'nobody'
+      $openvpn_group  = 'nogroup'
+      $openssl        = '/usr/bin/openssl'
+    }
     default: {
       $openvpn_dir    = '/etc/openvpn'
       $package_name   = 'openvpn'
