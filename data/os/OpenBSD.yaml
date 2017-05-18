@@ -1,0 +1,4 @@
+---
+openvpn::manage_service: false
+openvpn::openvpn_user: '_openvpn'
+openvpn::openvpn_group: '_openvpn'

@@ -1,0 +1,2 @@
+---
+openvpn::manage_systemd_unit: true

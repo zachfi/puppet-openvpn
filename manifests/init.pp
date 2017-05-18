@@ -2,18 +2,23 @@
 #
 # Install OpenVPN and configure the service to start
 #
-class openvpn(
-  $openvpn_dir    = $openvpn::params::openvpn_dir,
-  $package_name   = $openvpn::params::package_name,
-  $manage_service = $openvpn::params::manage_service,
-) inherits openvpn::params {
+class openvpn (
+  String $openvpn_dir,
+  String $package_name,
+  Boolean $manage_service,
+  Boolean $manage_systemd_unit,
+  String $openvpn_group,
+  String $openvpn_user,
+  String $openssl,
+) {
 
   package { $package_name:
     ensure => installed,
   }
 
-  -> file { $openvpn_dir:
-    ensure => directory,
+  file { $openvpn_dir:
+    ensure  => directory,
+    require => Package[$package_name],
   }
 
   @file { "${openvpn_dir}/ccd":

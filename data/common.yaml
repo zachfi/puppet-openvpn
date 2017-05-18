@@ -1,0 +1,8 @@
+---
+openvpn::openvpn_dir: '/etc/openvpn'
+openvpn::package_name: 'openvpn'
+openvpn::manage_service: true
+openvpn::openvpn_user: 'nobody'
+openvpn::openvpn_group: 'nobody'
+openvpn::openssl: '/usr/bin/openssl'
+openvpn::manage_systemd_unit: false

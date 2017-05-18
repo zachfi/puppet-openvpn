@@ -1,0 +1,4 @@
+---
+openvpn::openvpn_dir: '/usr/local/etc/openvpn'
+openvpn::package_name: 'security/openvpn'
+openvpn::manage_service: true
