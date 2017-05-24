@@ -6,9 +6,11 @@ A Puppet module to manage the OpenVPN client and server.
 
 ## Supported Platforms
 
+* CentOS
 * Debian
 * FreeBSD
 * OpenBSD
+* Ubuntu
 
 ## Usage
 
@@ -72,10 +74,4 @@ openvpn::server::csc { "srv1.example.com":
   content => "ifconfig-push 10.0.0.50 10.0.0.51",
 }
 ```
-
-## Future Work
-
-* OSX Client Configuration
-* Certificate management (piggyback on puppet?)
-* IPv6 Route Support
 
