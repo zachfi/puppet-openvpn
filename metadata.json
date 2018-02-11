@@ -1,6 +1,6 @@
 {
   "name": "zleslie-openvpn",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "zleslie",
   "summary": "Puppet powered OpenVPN",
   "license": "Apache-2.0",
@@ -47,6 +47,8 @@
       "version_requirement": "4.x"
     }
   ],
-  "dependencies": [ ],
+  "dependencies": [
+
+  ],
   "data_provider": "hiera"
 }
