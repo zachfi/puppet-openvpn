@@ -1,3 +1,6 @@
+## 2018-06-02 2.0.2
+Testing and module_sync changes.
+
 ## 2017-05-24 2.0.0
 ### Summary
 
