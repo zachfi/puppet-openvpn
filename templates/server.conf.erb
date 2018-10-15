@@ -39,7 +39,7 @@ crl-verify <%= @crl %>
 # address pool (10.8.0.0/255.255.255.0)
 # back to the OpenVPN server.
 <% Array(@route).each do |r| -%>
-push route <%= r %>
+push "route <%= r %>"
 <% end -%>
 
 <% Array(@route_ipv6).each do |r| -%>
