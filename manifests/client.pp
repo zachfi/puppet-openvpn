@@ -18,7 +18,7 @@ define openvpn::client (
   $custom_options = [],
 ) {
 
-  include ::openvpn
+  include openvpn
   $openvpn_dir         = $::openvpn::openvpn_dir
   $openvpn_group       = $::openvpn::openvpn_group
   $openvpn_user        = $::openvpn::openvpn_user

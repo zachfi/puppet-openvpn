@@ -6,7 +6,7 @@ define openvpn::server::csc (
   $mode  = '0640'
 ) {
 
-  include ::openvpn
+  include openvpn
   $openvpn_dir = $::openvpn::openvpn_dir
 
   realize(File["${openvpn_dir}/ccd"])
