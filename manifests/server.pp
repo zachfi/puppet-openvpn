@@ -43,10 +43,10 @@ class openvpn::server (
 ) {
 
   include openvpn
-  $openvpn_dir   = $::openvpn::openvpn_dir
-  $openvpn_group = $::openvpn::openvpn_group
-  $openvpn_user  = $::openvpn::openvpn_user
-  $openssl       = $::openvpn::openssl
+  $openvpn_dir   = $openvpn::openvpn_dir
+  $openvpn_group = $openvpn::openvpn_group
+  $openvpn_user  = $openvpn::openvpn_user
+  $openssl       = $openvpn::openssl
 
   if ( $log_append != '' ) and ( $log != '' ){
     err('Log_append and log should not both be defined')

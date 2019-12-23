@@ -19,10 +19,10 @@ define openvpn::client (
 ) {
 
   include openvpn
-  $openvpn_dir         = $::openvpn::openvpn_dir
-  $openvpn_group       = $::openvpn::openvpn_group
-  $openvpn_user        = $::openvpn::openvpn_user
-  $openssl             = $::openvpn::openssl
+  $openvpn_dir         = $openvpn::openvpn_dir
+  $openvpn_group       = $openvpn::openvpn_group
+  $openvpn_user        = $openvpn::openvpn_user
+  $openssl             = $openvpn::openssl
 
   file { "${openvpn_dir}/${server}.conf":
     owner   => root,
