@@ -1,6 +1,6 @@
 {
   "name": "zleslie-openvpn",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "author": "zleslie",
   "summary": "Puppet powered OpenVPN",
   "license": "Apache-2.0",
@@ -11,8 +11,8 @@
     {
       "operatingsystem": "FreeBSD",
       "operatingsystemrelease": [
-        "11",
-        "10"
+        "12",
+        "11"
       ]
     },
     {
