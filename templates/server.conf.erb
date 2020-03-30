@@ -92,6 +92,9 @@ client-config-dir <%= @ccd %>
 #     from different clients.  See man
 #     page for more info on learn-address script.
 ;learn-address ./script
+<% if @learn_address != '' -%>
+learn-address <%= @learn_address %>
+<% end -%>
 
 # If enabled, this directive will configure
 # all clients to redirect their default
@@ -168,7 +171,9 @@ duplicate-cn
 # Ping every 10 seconds, assume that remote
 # peer is down if no ping received during
 # a 120 second time period.
-keepalive 10 120
+<% if @keepalive != '' -%>
+keepalive <%= @keepalive %>
+<% end -%>
 
 # For extra security beyond that provided
 # by SSL/TLS, create an "HMAC firewall"
