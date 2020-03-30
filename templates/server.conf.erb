@@ -92,6 +92,9 @@ client-config-dir <%= @ccd %>
 #     from different clients.  See man
 #     page for more info on learn-address script.
 ;learn-address ./script
+<% if @learn_address != '' -%>
+learn-address <%= @learn_address %>
+<% end -%>
 
 # If enabled, this directive will configure
 # all clients to redirect their default

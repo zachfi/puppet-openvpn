@@ -40,6 +40,7 @@ class openvpn::server (
   $topology                 = 'subnet',
   $custom_options           = [],
   $ccd                      = 'ccd',
+  $learn_address            = '',
 ) {
 
   include openvpn
