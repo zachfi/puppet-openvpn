@@ -40,6 +40,7 @@ class openvpn::server (
   $topology                 = 'subnet',
   $custom_options           = [],
   $ccd                      = 'ccd',
+  $compress                 = 'legacy',
 ) {
 
   include openvpn
