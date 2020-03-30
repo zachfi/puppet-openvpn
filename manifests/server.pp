@@ -13,6 +13,7 @@ class openvpn::server (
   $dev                      = 'tun',
   $dev_type                 = '',
   $dh                       = 'dh2048.pem',
+  $dh_size                  = 2048,
   $dns                      = '',
   $domain                   = '',
   $wins                     = '',
@@ -61,10 +62,14 @@ class openvpn::server (
     content => template('openvpn/server.conf.erb'),
   }
 
+  $fq_dh = $dh ? {
+      /^\/.*/ => $dh,
+      default => "${openvpn_dir}/${dh}",
+  }
   exec { "create ${dh}":
     cwd     => $openvpn_dir,
-    command => "${openssl} dhparam -out ${dh} 2048",
-    creates => "${openvpn_dir}/${dh}",
+    command => "${openssl} dhparam -out ${fq_dh} ${dh_size}",
+    creates => $fq_dh,
   }
 
   if $tls_auth {
