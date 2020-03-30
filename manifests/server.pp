@@ -13,6 +13,7 @@ class openvpn::server (
   $dev                      = 'tun',
   $dev_type                 = '',
   $dh                       = 'dh2048.pem',
+  $dh_size                  = 2048,
   $dns                      = '',
   $domain                   = '',
   $wins                     = '',
@@ -67,7 +68,7 @@ class openvpn::server (
   }
   exec { "create ${dh}":
     cwd     => $openvpn_dir,
-    command => "${openssl} dhparam -out ${fq_dh} 2048",
+    command => "${openssl} dhparam -out ${fq_dh} ${dh_size}",
     creates => $fq_dh,
   }
 
