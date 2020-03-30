@@ -41,6 +41,7 @@ class openvpn::server (
   $topology                 = 'subnet',
   $custom_options           = [],
   $ccd                      = 'ccd',
+  $keepalive                = '10 120',
   $learn_address            = '',
 ) {
 

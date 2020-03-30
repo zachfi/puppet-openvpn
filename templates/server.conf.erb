@@ -171,7 +171,9 @@ duplicate-cn
 # Ping every 10 seconds, assume that remote
 # peer is down if no ping received during
 # a 120 second time period.
-keepalive 10 120
+<% if @keepalive != '' -%>
+keepalive <%= @keepalive %>
+<% end -%>
 
 # For extra security beyond that provided
 # by SSL/TLS, create an "HMAC firewall"
