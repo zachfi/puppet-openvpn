@@ -59,7 +59,7 @@ class openvpn::server (
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
   file { "${openvpn_dir}/openvpn.conf":
-    owner   => root,
+    owner   => 'root',
     group   => 0,
     mode    => '0600',
     content => template('openvpn/server.conf.erb'),
