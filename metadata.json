@@ -18,6 +18,11 @@
     {
       "operatingsystem": "OpenBSD",
       "operatingsystemrelease": [
+        "6.6",
+        "6.5",
+        "6.4",
+        "6.3",
+        "6.2",
         "6.1",
         "6.0"
       ]
@@ -31,6 +36,8 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
+        "10",
+        "9",
         "8"
       ]
     },
@@ -44,7 +51,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": "4.x"
+      "version_requirement": ">=4.0.0 < 7.0.0"
     }
   ],
   "dependencies": [
