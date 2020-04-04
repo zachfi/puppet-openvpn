@@ -31,6 +31,7 @@ class openvpn::server (
   Array                   $route                    = [],
   Array                   $route_ipv6               = [],
   String                  $server                   = '10.8.0.0 255.255.255.0',
+  String                  $ipp                      = 'ipp.txt',
   Optional[String]        $server_ipv6              = undef,
   String                  $username_as_common_name  = '',
   Variant[String,Integer] $script_security          = '',
