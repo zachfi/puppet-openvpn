@@ -1,11 +1,18 @@
 require 'spec_helper'
 
 describe 'openvpn' do
+
+  shared_examples_for 'openvpn' do
+    it { is_expected.to compile.with_all_deps }
+
+    it { is_expected.to contain_class('openvpn') }
+  end
+
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) { facts }
-
-      it { is_expected.to contain_class('openvpn') }
+    
+      it_behaves_like 'openvpn'
 
       case facts[:osfamily]
       when 'FreeBSD'
