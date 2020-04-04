@@ -56,6 +56,17 @@ class openvpn::server (
     err('Log_append and log should not both be defined')
   }
 
+  $ccd_dir = $ccd ? {
+      /^\/.*/ => $ccd,
+      default => "${openvpn_dir}/${ccd}",
+  }
+  @file { $ccd_dir:
+    ensure => directory,
+    owner  => 'root',
+    group  => 0,
+    mode   => '0755',
+  }
+
   # Server configuration file
   #file { "${openvpn_dir}/${name}.conf":
   file { "${openvpn_dir}/openvpn.conf":
