@@ -3,19 +3,19 @@
 # Configure an OpenVPN client instance
 #
 define openvpn::client (
-  $server,
-  $auth           = 'SHA1',
-  $port           = '1194',
-  $proto          = 'udp',
-  $dev            = 'tun',
-  $ca             = 'ca.crt',
-  $cert           = $name,
-  $ns_cert_type   = 'server',
-  $verb           = 3,
-  $cipher         = 'AES-192-CBC',
-  $compression    = 'lzo',
-  $tls_auth_key   = undef,
-  $custom_options = [],
+  String           $server,
+  String           $auth           = 'SHA1',
+  String           $port           = '1194',
+  String           $proto          = 'udp',
+  String           $dev            = 'tun',
+  String           $ca             = 'ca.crt',
+  String           $cert           = $name,
+  String           $ns_cert_type   = 'server',
+  Integer          $verb           = 3,
+  String           $cipher         = 'AES-192-CBC',
+  String           $compression    = 'lzo',
+  Optional[String] $tls_auth_key   = undef,
+  Array            $custom_options = [],
 ) {
 
   include openvpn
