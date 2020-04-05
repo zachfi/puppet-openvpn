@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'openvpn' do
-
   shared_examples_for 'openvpn' do
     it { is_expected.to compile.with_all_deps }
 
@@ -11,7 +10,7 @@ describe 'openvpn' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) { facts }
-    
+
       it_behaves_like 'openvpn'
 
       case facts[:osfamily]
