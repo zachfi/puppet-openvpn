@@ -21,10 +21,6 @@ class openvpn (
     require => Package[$package_name],
   }
 
-  @file { "${openvpn_dir}/ccd":
-    ensure => directory,
-  }
-
   if $manage_service {
     service { 'openvpn':
       ensure  => running,
