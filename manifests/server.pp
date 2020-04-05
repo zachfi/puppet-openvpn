@@ -41,6 +41,7 @@ class openvpn::server (
   $topology                 = 'subnet',
   $custom_options           = [],
   $ccd                      = 'ccd',
+  $purge_ccd                = false,
   $compress                 = 'legacy',
   $keepalive                = '10 120',
   $learn_address            = '',
@@ -61,10 +62,12 @@ class openvpn::server (
       default => "${openvpn_dir}/${ccd}",
   }
   @file { $ccd_dir:
-    ensure => directory,
-    owner  => 'root',
-    group  => 0,
-    mode   => '0755',
+    ensure  => directory,
+    owner   => 'root',
+    group   => 0,
+    mode    => '0755',
+    purge   => $purge_ccd,
+    recurse => $purge_ccd,
   }
 
   # Server configuration file
