@@ -42,6 +42,7 @@ class openvpn::server (
   String                  $topology                 = 'subnet',
   Array                   $custom_options           = [],
   String                  $ccd                      = 'ccd',
+  Boolean                 $purge_ccd                = false,
   String                  $compress                 = 'legacy',
   String                  $keepalive                = '10 120',
   String                  $learn_address            = '',
@@ -55,6 +56,19 @@ class openvpn::server (
 
   if ( $log_append != '' ) and ( $log != '' ){
     err('Log_append and log should not both be defined')
+  }
+
+  $ccd_dir = $ccd ? {
+      /^\/.*/ => $ccd,
+      default => "${openvpn_dir}/${ccd}",
+  }
+  @file { $ccd_dir:
+    ensure  => directory,
+    owner   => 'root',
+    group   => 0,
+    mode    => '0755',
+    purge   => $purge_ccd,
+    recurse => $purge_ccd,
   }
 
   # Server configuration file

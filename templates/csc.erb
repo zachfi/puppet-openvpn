@@ -1,0 +1,9 @@
+<% if @content -%>
+<%= @content %>
+<% end -%>
+<% if @ifconfig_push -%>
+ifconfig-push <%= @ifconfig_push %> <%= @ifconfig_push_netmask %>
+<% end -%>
+<% if @ifconfig_ipv6_push -%>
+ifconfig-ipv6-push <%= @ifconfig_ipv6_push %> <%= @ifconfig_ipv6_push_netmask %>
+<% end -%>
