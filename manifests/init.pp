@@ -4,6 +4,7 @@
 #
 class openvpn (
   String $openvpn_dir,
+  String $openvpn_path,
   String $package_name,
   Boolean $manage_service,
   Boolean $manage_systemd_unit,

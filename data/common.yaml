@@ -1,5 +1,6 @@
 ---
 openvpn::openvpn_dir: '/etc/openvpn'
+openvpn::openvpn_path: '/usr/sbin/openvpn'
 openvpn::package_name: 'openvpn'
 openvpn::manage_service: true
 openvpn::openvpn_user: 'nobody'
