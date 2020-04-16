@@ -11,6 +11,7 @@ class openvpn (
   String $openvpn_group,
   String $openvpn_user,
   String $openssl,
+  String $server_service_name,
 ) {
 
   package { $package_name:
@@ -26,6 +27,7 @@ class openvpn (
     service { 'openvpn':
       ensure  => running,
       enable  => true,
+      name    => $server_service_name,
       require => File[$openvpn_dir],
     }
   }

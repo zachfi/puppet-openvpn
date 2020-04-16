@@ -7,3 +7,4 @@ openvpn::openvpn_user: 'nobody'
 openvpn::openvpn_group: 'nobody'
 openvpn::openssl: '/usr/bin/openssl'
 openvpn::manage_systemd_unit: false
+openvpn::server_service_name: 'openvpn'
