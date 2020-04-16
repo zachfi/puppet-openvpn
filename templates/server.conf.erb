@@ -14,9 +14,11 @@ key <%= @key %>  # This file should be kept secret
 dh <%= @dh %>
 <% if @server != '' -%>
 server <%= @server %>
-ifconfig-pool-persist ipp.txt
 <% else -%>
 mode server
+<% end -%>
+<% if @ipp != '' -%>
+ifconfig-pool-persist <%= @ipp %>
 <% end -%>
 <% if @ifconfig != '' -%>
 ifconfig <%= @ifconfig %>
