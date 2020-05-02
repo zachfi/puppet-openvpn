@@ -47,7 +47,6 @@ class openvpn::server (
   String                  $keepalive                = '10 120',
   String                  $learn_address            = '',
 ) {
-
   include openvpn
   $openvpn_dir   = $openvpn::openvpn_dir
   $openvpn_path  = $openvpn::openvpn_path
@@ -55,13 +54,13 @@ class openvpn::server (
   $openvpn_user  = $openvpn::openvpn_user
   $openssl       = $openvpn::openssl
 
-  if ( $log_append != '' ) and ( $log != '' ){
+  if ( $log_append != '' ) and ( $log != '' ) {
     err('Log_append and log should not both be defined')
   }
 
   $ccd_dir = $ccd ? {
-      /^\/.*/ => $ccd,
-      default => "${openvpn_dir}/${ccd}",
+    /^\/.*/ => $ccd,
+    default => "${openvpn_dir}/${ccd}",
   }
   @file { $ccd_dir:
     ensure  => directory,
@@ -82,8 +81,8 @@ class openvpn::server (
   }
 
   $fq_dh = $dh ? {
-      /^\/.*/ => $dh,
-      default => "${openvpn_dir}/${dh}",
+    /^\/.*/ => $dh,
+    default => "${openvpn_dir}/${dh}",
   }
   exec { "create ${dh}":
     cwd     => $openvpn_dir,

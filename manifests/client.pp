@@ -17,7 +17,6 @@ define openvpn::client (
   Optional[String] $tls_auth_key   = undef,
   Array            $custom_options = [],
 ) {
-
   include openvpn
   $openvpn_dir         = $openvpn::openvpn_dir
   $openvpn_group       = $openvpn::openvpn_group
