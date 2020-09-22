@@ -3,8 +3,7 @@
 # Install OpenVPN and configure the service to start
 #
 class openvpn (
-  String $openvpn_dir,
-  Stdlib::Absolutepath $openvpn_path,
+  Stdlib::Absolutepath $openvpn_dir,
   String $package_name,
   Boolean $manage_service,
   Boolean $manage_systemd_unit,
