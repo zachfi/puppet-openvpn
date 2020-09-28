@@ -4,3 +4,5 @@
 fixtures:
   forge_modules:
     stdlib: "puppetlabs/stdlib"
+  symlinks:
+    openvpn: "#{source_dir}"
