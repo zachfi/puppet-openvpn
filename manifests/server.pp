@@ -81,6 +81,7 @@ class openvpn::server (
     group   => 0,
     mode    => '0600',
     content => template('openvpn/server.conf.erb'),
+    tag     => 'openvpn',
   }
 
   $fq_dh = $dh ? {
@@ -91,6 +92,7 @@ class openvpn::server (
     cwd     => $openvpn_dir,
     command => "${openssl} dhparam -out ${fq_dh} ${dh_size}",
     creates => $fq_dh,
+    tag     => 'openvpn',
   }
 
   if $tls_auth {
@@ -98,12 +100,7 @@ class openvpn::server (
       cwd     => $openvpn_dir,
       command => "${openvpn_path} --genkey --secret ta.key",
       creates => "${openvpn_dir}/ta.key",
+      tag     => 'openvpn',
     }
-  }
-
-  if $openvpn::manage_service {
-    Exec["create ${dh}"] ~> Service['openvpn']
-
-    File["${openvpn_dir}/openvpn.conf"] ~> Service['openvpn']
   }
 }
