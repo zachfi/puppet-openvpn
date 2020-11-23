@@ -1,6 +1,9 @@
 # Which local IP address should OpenVPN
 # listen on? (optional)
 ;local a.b.c.d
+<% if @local_ip -%>
+local <%= @local_ip %>
+<% end -%>
 
 port <%= @port %>
 proto <%= @proto %>

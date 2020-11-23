@@ -3,6 +3,7 @@
 # Install and configure the OpenVPN server
 #
 class openvpn::server (
+  Optional[String]        $local_ip                 = undef,
   String                  $auth                     = 'SHA1',
   String                  $ca                       = 'ca.crt',
   String                  $cert                     = 'server.crt',
