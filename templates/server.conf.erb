@@ -36,6 +36,10 @@ server-ipv6 <%= @server_ipv6 %>
 crl-verify <%= @crl %>
 <% end -%>
 
+<% if @management -%>
+management <%= @management %>
+<% end -%>
+
 # Push routes to the client to allow it
 # to reach other private subnets behind
 # the server.  Remember that these

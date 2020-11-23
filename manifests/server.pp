@@ -47,6 +47,7 @@ class openvpn::server (
   String                  $compress                 = 'legacy',
   String                  $keepalive                = '10 120',
   String                  $learn_address            = '',
+  Optional[String]        $management               = undef,
 ) {
 
   include openvpn
