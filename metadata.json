@@ -7,6 +7,13 @@
   "source": "git://github.com/xaque208/puppet-openvpn.git",
   "project_page": "https://github.com/xaque208/puppet-openvpn",
   "issues_url": "https://github.com/xaque208/puppet-openvpn/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.25.0 < 7.0.0"
+    }
+  ],
+  "data_provider": "hiera",
   "operatingsystem_support": [
     {
       "operatingsystem": "FreeBSD",
@@ -54,11 +61,7 @@
       "version_requirement": ">=4.0.0 < 7.0.0"
     }
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.25.0 < 7.0.0"
-    }
-  ],
-  "data_provider": "hiera"
+  "pdk-version": "1.18.1",
+  "template-url": "pdk-default#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
