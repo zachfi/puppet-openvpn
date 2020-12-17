@@ -1,7 +1,17 @@
 client
 dev <%= @dev %>
 proto <%= @proto %>
+<% if @connections -%>
+  <%- @connections.each do | connection | -%>
+    <%- %><connection>
+    <%- connection.each do | key, val | -%>
+       <%= key %> <%= val %>
+    <%- end -%>
+    <%- %></connection>
+  <%- end -%>
+<% else -%>
 remote <%= @server %> <%= @port %>
+<% end -%>
 resolv-retry infinite
 nobind
 persist-key
