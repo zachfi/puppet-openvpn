@@ -12,7 +12,7 @@ key <%= @cert %>.key
 <% if @tls_auth_key -%>
 tls-auth <%= @tls_auth_key %> 1
 <% end -%>
-<% if @auth -%>
+<% if @auth != '' -%>
 auth <%= @auth %>
 <% end -%>
 <% if @openvpn_user -%>
@@ -21,11 +21,13 @@ user  <%= @openvpn_user %>
 <% if @openvpn_group -%>
 group <%= @openvpn_group %>
 <% end -%>
-<% if @ns_cert_type -%>
+<% if @ns_cert_type != '' -%>
 ns-cert-type <%= @ns_cert_type %>
 <% end -%>
+<% if @cipher != '' -%>
 cipher <%= @cipher %>
-<% if @compression -%>
+<% end -%>
+<% if @compression != '' -%>
 comp-<%= @compression %>
 <% end -%>
 verb <%= @verb %>
