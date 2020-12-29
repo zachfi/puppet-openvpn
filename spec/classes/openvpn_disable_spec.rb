@@ -7,7 +7,7 @@ describe 'openvpn::disable' do
     it {
       is_expected.to contain_service('openvpn')
         .with_ensure('stopped')
-        .with_enabled(false)
+        .with_enable(false)
     }
     it {
       is_expected.to contain_package('openvpn')

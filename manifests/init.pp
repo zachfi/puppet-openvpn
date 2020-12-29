@@ -13,7 +13,6 @@ class openvpn (
   String $openssl,
   String $server_service_name,
 ) {
-
   package { $package_name:
     ensure => installed,
   }

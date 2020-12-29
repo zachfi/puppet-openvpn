@@ -10,8 +10,6 @@ define openvpn::server::csc (
   Optional[String] $ifconfig_ipv6_push         = undef,
   String           $ifconfig_ipv6_push_netmask = '',
 ) {
-
-
   include openvpn::server
   $ccd_dir = $openvpn::server::ccd_dir
 
