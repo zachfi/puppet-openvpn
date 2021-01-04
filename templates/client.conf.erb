@@ -29,6 +29,12 @@ cipher <%= @cipher %>
 comp-<%= @compression %>
 <% end -%>
 verb <%= @verb %>
+<% @route_ipv4.each do |route4| -%>
+route <%= route4 %>
+<% end -%>
+<% @route_ipv6.each do |route6| -%>
+route-ipv6 <%= route6 %>
+<% end -%>
 # custom options
 <% @custom_options.each do |custom_option| -%>
 <%= custom_option %>

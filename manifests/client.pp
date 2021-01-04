@@ -2,6 +2,16 @@
 #
 # Configure an OpenVPN client instance
 #
+# Parameters
+# route_ipv4:
+#   Array of ipv4 networks (network and netmask) to route 
+#   through the vpn
+#   Example: ['10.0.0.0 255.0.0.0']
+# route_ipv6:
+#   Array of ipv6 networks (network/netmask) to route 
+#   through the vpn
+#   Example: ['2001:db8::/32']
+#
 define openvpn::client (
   String           $server,
   String           $auth           = 'SHA1',
@@ -16,6 +26,8 @@ define openvpn::client (
   String           $compression    = 'lzo',
   Optional[String] $tls_auth_key   = undef,
   Array            $custom_options = [],
+  Array            $route_ipv4     = [],
+  Array            $route_ipv6     = [],
 ) {
 
   include openvpn
