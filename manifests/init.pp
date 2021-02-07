@@ -24,6 +24,9 @@ class openvpn (
   }
 
   if $manage_service {
+    Exec <| tag == 'openvpn' |> ~> Service['openvpn']
+    File <| tag == 'openvpn' |> ~> Service['openvpn']
+
     service { 'openvpn':
       ensure  => running,
       enable  => true,
