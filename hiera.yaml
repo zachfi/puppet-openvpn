@@ -1,14 +1,15 @@
 ---
-version: 4
-datadir: data
+version: 5
+
+defaults: # Used for any hierarchy level that omits these keys.
+  datadir: data         # This path is relative to hiera.yaml's directory.
+  data_hash: yaml_data  # Use the built-in YAML backend.
+  
 hierarchy:
   - name: "kernel"
-    path: "kernel/%{facts.kernel}"
-    backend: yaml
+    path: "kernel/%{facts.kernel}.yaml"
   - name: "family"
-    path: "os/%{facts.os.family}"
-    backend: yaml
+    path: "os/%{facts.os.family}.yaml"
   - name: "common"
-    backend: yaml
-    path: "common"
+    path: "common.yaml"
 
