@@ -13,21 +13,22 @@
 #   Example: ['2001:db8::/32']
 #
 define openvpn::client (
-  String           $server,
-  String           $auth           = 'SHA1',
-  String           $port           = '1194',
-  String           $proto          = 'udp',
-  String           $dev            = 'tun',
-  String           $ca             = 'ca.crt',
-  String           $cert           = $name,
-  String           $ns_cert_type   = 'server',
-  Integer          $verb           = 3,
-  String           $cipher         = 'AES-192-CBC',
-  String           $compression    = 'lzo',
-  Optional[String] $tls_auth_key   = undef,
-  Array            $custom_options = [],
-  Array            $route_ipv4     = [],
-  Array            $route_ipv6     = [],
+  String                $server,
+  String                $auth           = 'SHA1',
+  String                $port           = '1194',
+  String                $proto          = 'udp',
+  String                $dev            = 'tun',
+  String                $ca             = 'ca.crt',
+  String                $cert           = $name,
+  String                $ns_cert_type   = 'server',
+  Integer               $verb           = 3,
+  String                $cipher         = 'AES-192-CBC',
+  String                $compression    = 'lzo',
+  Optional[String]      $tls_auth_key   = undef,
+  Optional[Array[Hash]] $connections    = undef,
+  Array                 $custom_options = [],
+  Array                 $route_ipv4     = [],
+  Array                 $route_ipv6     = [],
 ) {
 
   include openvpn
